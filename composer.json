@@ -1,0 +1,15 @@
+{
+    "name": "pedro-mg/uabc-api",
+    "autoload": {
+        "psr-4": {
+            "UABC\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Pedro Martin del Campo Gonzalez",
+            "email": "pedro.martindelcampo.gonzalez@gmail.com"
+        }
+    ],
+    "require": {}
+}
