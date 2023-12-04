@@ -1,1 +1,2 @@
-GET / HomeController@healthcheck
+GET / HomeController@healthcheck;
+GET /news NewsController@index;

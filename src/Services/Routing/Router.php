@@ -6,10 +6,10 @@ class Router {
 
   private $routes = [];
 
-  public function loadRoutesFromText($routesText) {
-    $entries = explode(PHP_EOL, $routesText);
+  public function loadRoutesFromText($routesText, $separator = ';') {
+    $entries = explode($separator, $routesText);
     foreach ($entries as $entry) {
-      [$method, $path, $controller] = explode(' ', $entry);
+      [$method, $path, $controller] = explode(' ', trim($entry));
       $this->routes["$method $path"] = $controller;
     }
   }

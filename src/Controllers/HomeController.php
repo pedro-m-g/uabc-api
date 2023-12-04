@@ -2,12 +2,11 @@
 
 namespace UABC\Controllers;
 
-class HomeController {
+class HomeController extends Controller {
 
   public function healthcheck() {
-    header('Content-Type: application/json');
-    echo json_encode([
-      'status' => 'success'
+    $this->jsonResponse([
+      "status"=> "success"
     ]);
   }
 
