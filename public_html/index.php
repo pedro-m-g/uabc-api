@@ -2,26 +2,28 @@
 
 require_once __DIR__ ."/../vendor/autoload.php";
 
-$url = $_SERVER['REQUEST_URI'];
-$path = parse_url($url, PHP_URL_PATH);
-$method = $_SERVER['REQUEST_METHOD'];
+use UABC\Services\Routing\RouteNotFoundException;
+use UABC\Services\Routing\Router;
 
-$routes = file_get_contents('../routes.txt');
-$routeLines = explode(PHP_EOL, $routes);
-$routesRegistry = [];
-foreach ($routeLines as $line) {
-  [$routeMethod, $routePath, $routeController] = explode(' ', $line);
-  $routesRegistry["$routeMethod $routePath"] = $routeController;
-}
-$request = "$method $path";
-if (!array_key_exists($request, $routesRegistry)) {
+$controllersNamespace = '\\UABC\\Controllers';
+
+$router = new Router();
+$router->loadRoutesFromText(file_get_contents('../routes.txt'));
+
+try {
+  $url = $_SERVER['REQUEST_URI'];
+
+  $path = parse_url($url, PHP_URL_PATH);
+  $method = $_SERVER['REQUEST_METHOD'];
+
+  $route = $router->findRoute($method, $path);
+
+  [$controllerClass, $controllerMethod] = $router->parseRoute($route);
+
+  $qualifiedControllerClass = "$controllersNamespace\\$controllerClass";
+
+  $controller = new $qualifiedControllerClass();
+  $controller->$controllerMethod();
+} catch (RouteNotFoundException $ex) {
   http_response_code(404);
-  return;
 }
-
-$route = $routesRegistry[$request];
-[$controllerClass, $controllerMethod] = explode('@', $route);
-$qualifiedControllerClass = "\\UABC\\Controllers\\$controllerClass";
-$qualifiedControllerMethod = trim($controllerMethod);
-$controller = new $qualifiedControllerClass();
-$controller->$qualifiedControllerMethod();
