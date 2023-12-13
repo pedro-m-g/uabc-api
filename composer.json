@@ -2,7 +2,7 @@
     "name": "pedro-mg/uabc-api",
     "autoload": {
         "psr-4": {
-            "UABC\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [

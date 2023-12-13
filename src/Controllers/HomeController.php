@@ -1,6 +1,6 @@
 <?php
 
-namespace UABC\Controllers;
+namespace App\Controllers;
 
 class HomeController extends Controller {
 

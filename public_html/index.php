@@ -2,10 +2,10 @@
 
 require_once __DIR__ ."/../vendor/autoload.php";
 
-use UABC\Routing\RouteNotFoundException;
-use UABC\Routing\Router;
+use App\Routing\RouteNotFoundException;
+use App\Routing\Router;
 
-$controllersNamespace = '\\UABC\\Controllers';
+$controllersNamespace = '\\App\\Controllers';
 
 $router = new Router();
 $router->loadRoutesFromText(file_get_contents('../routes.txt'));
