@@ -2,8 +2,8 @@
 
 require_once __DIR__ ."/../vendor/autoload.php";
 
-use UABC\Services\Routing\RouteNotFoundException;
-use UABC\Services\Routing\Router;
+use UABC\Routing\RouteNotFoundException;
+use UABC\Routing\Router;
 
 $controllersNamespace = '\\UABC\\Controllers';
 

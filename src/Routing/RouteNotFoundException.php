@@ -1,6 +1,6 @@
 <?php
 
-namespace UABC\Services\Routing;
+namespace UABC\Routing;
 
 class RouteNotFoundException extends \Exception {
 
