@@ -18,9 +18,9 @@ class NewsItem extends Entity
             'title' => $this->title,
             'excerpt' => $this->excerpt,
             'body' => $this->body,
-            'created_at' => $this->created_at->toDateTimeString(),
-            'updated_at' => $this->updated_at->toDateTimeString(),
-            'deleted_at' => $this->deleted_at?->toDateTimeString()
+            'createdAt' => $this->created_at->toDateTimeString(),
+            'updatedAt' => $this->updated_at->toDateTimeString(),
+            'deletedAt' => $this->deleted_at?->toDateTimeString()
         ];
     }
 }
