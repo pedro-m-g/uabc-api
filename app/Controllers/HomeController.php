@@ -2,10 +2,15 @@
 
 namespace App\Controllers;
 
+use CodeIgniter\HTTP\ResponseInterface;
+
 class HomeController extends BaseController
 {
-    public function index(): string
+    public function index(): ResponseInterface
     {
-        return view('welcome_message');
+        return $this->response->setStatusCode(200)->setJSON([
+            'name' => 'uabc-api',
+            'status' => 'ok'
+        ]);
     }
 }
