@@ -30,7 +30,7 @@ jobs:
           ${{ runner.os }}-php-
 
     - name: Install dependencies
-      run: composer2 install --prefer-dist --no-progress
+      run: composer install --prefer-dist --no-progress
 
     - name: Migrate database
       run: php spark migrate
