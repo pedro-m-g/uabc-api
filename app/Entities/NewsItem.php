@@ -3,6 +3,7 @@
 namespace App\Entities;
 
 use CodeIgniter\Entity\Entity;
+use CodeIgniter\I18n\Time;
 
 class NewsItem extends Entity
 {
@@ -18,9 +19,24 @@ class NewsItem extends Entity
             'title' => $this->title,
             'excerpt' => $this->excerpt,
             'body' => $this->body,
-            'createdAt' => $this->created_at->toDateTimeString(),
-            'updatedAt' => $this->updated_at->toDateTimeString(),
-            'deletedAt' => $this->deleted_at?->toDateTimeString()
+            'createdAt' => $this->formatDate($this->created_at),
+            'updatedAt' => $this->formatDate($this->updated_at),
+            'deletedAt' => $this->formatDate($this->deleted_at)
         ];
+    }
+
+    public static function collectionToJSONArray($array)
+    {
+        return array_map(function ($item) {
+            return $item->toJSONArray();
+        }, $array);
+    }
+
+    private function formatDate($date)
+    {
+        if ($date == null) {
+            return null;
+        }
+        return $date->toDateString() . 'T' . $date->toTimeString() . 'Z';
     }
 }

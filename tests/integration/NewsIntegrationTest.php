@@ -1,5 +1,6 @@
 <?php
 
+use App\Entities\NewsItem;
 use App\Models\NewsItemModel;
 use CodeIgniter\Test\CIUnitTestCase;
 use CodeIgniter\Test\DatabaseTestTrait;
@@ -35,7 +36,7 @@ final class NewsIntegrationTest extends CIUnitTestCase
         $result->assertJSONExact([
             'limit' => 0,
             'offset' => 0,
-            'data' => $news
+            'data' => NewsItem::collectionToJSONArray($news)
         ]);
     }
 
@@ -52,7 +53,7 @@ final class NewsIntegrationTest extends CIUnitTestCase
         $result->assertJSONExact([
             'limit' => 3,
             'offset' => 0,
-            'data' => array_slice($news, 0, 3)
+            'data' => array_slice(NewsItem::collectionToJSONArray($news), 0, 3)
         ]);
     }
 
@@ -69,7 +70,7 @@ final class NewsIntegrationTest extends CIUnitTestCase
         $result->assertJSONExact([
             'limit' => 3,
             'offset' => 3,
-            'data' => array_slice($news, 3, 3)
+            'data' => array_slice(NewsItem::collectionToJSONArray($news), 3, 3)
         ]);
     }
 
@@ -86,7 +87,7 @@ final class NewsIntegrationTest extends CIUnitTestCase
         $result->assertJSONExact([
             'limit' => 3,
             'offset' => 6,
-            'data' => array_slice($news, 6, 3)
+            'data' => array_slice(NewsItem::collectionToJSONArray($news), 6, 3)
         ]);
     }
 

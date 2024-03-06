@@ -33,9 +33,7 @@ class NewsController extends BaseController
         return $this->response->setStatusCode(200)->setJSON([
             'limit' => $limit,
             'offset' => $offset,
-            'data' => array_map(function ($newsItem) {
-                return $newsItem->toJSONArray();
-            }, $news)
+            'data' => NewsItem::collectionToJSONArray($news)
         ]);
     }
 
