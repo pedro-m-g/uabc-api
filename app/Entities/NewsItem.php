@@ -37,6 +37,6 @@ class NewsItem extends Entity
         if ($date == null) {
             return null;
         }
-        return $date->toDateString() . 'T' . $date->toTimeString() . 'Z';
+        return $date->toDateString() . 'T' . $date->toTimeString();
     }
 }
