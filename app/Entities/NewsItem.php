@@ -19,9 +19,9 @@ class NewsItem extends Entity
             'title' => $this->title,
             'excerpt' => $this->excerpt,
             'body' => $this->body,
-            'createdAt' => $this->created_at->format('U'),
-            'updatedAt' => $this->updated_at->format('U'),
-            'deletedAt' => $this->deleted_at?->format('U')
+            'createdAt' => intval($this->created_at->format('U')),
+            'updatedAt' => intval($this->updated_at->format('U')),
+            'deletedAt' => intval($this->deleted_at?->format('U'))
         ];
     }
 
