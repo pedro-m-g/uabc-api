@@ -19,9 +19,9 @@ class NewsItem extends Entity
             'title' => $this->title,
             'excerpt' => $this->excerpt,
             'body' => $this->body,
-            'createdAt' => $this->formatDate($this->created_at),
-            'updatedAt' => $this->formatDate($this->updated_at),
-            'deletedAt' => $this->formatDate($this->deleted_at)
+            'createdAt' => $this->created_at->format('U'),
+            'updatedAt' => $this->updated_at->format('U'),
+            'deletedAt' => $this->deleted_at?->format('U')
         ];
     }
 
@@ -30,13 +30,5 @@ class NewsItem extends Entity
         return array_map(function ($item) {
             return $item->toJSONArray();
         }, $array);
-    }
-
-    private function formatDate($date)
-    {
-        if ($date == null) {
-            return null;
-        }
-        return $date->toDateString() . 'T' . $date->toTimeString();
     }
 }
