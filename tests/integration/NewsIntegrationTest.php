@@ -91,6 +91,18 @@ final class NewsIntegrationTest extends CIUnitTestCase
         ]);
     }
 
+    public function testGetArticleById()
+    {
+        $model = new NewsItemModel();
+        $fabricator = new Fabricator($model);
+        $newsItem = $fabricator->create();
+
+        $result = $this->get("/news/{$newsItem->id}");
+
+        $result->assertOK();
+        $result->assertJSONExact($newsItem->toJSONArray());
+    }
+
     public function testUpdateNewsItem()
     {
         $model = new NewsItemModel();

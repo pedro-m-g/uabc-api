@@ -37,6 +37,16 @@ class NewsController extends BaseController
         ]);
     }
 
+    public function getArticle(string $id): ResponseInterface
+    {
+        $newsArticle = $this->newsItemModel->find($id);
+        if ($newsArticle === null) {
+            return $this->response->setStatusCode(404);
+        }
+        return $this->response->setStatusCode(200)
+            ->setJSON($newsArticle->toJSONArray());
+    }
+
     public function create(): ResponseInterface
     {
         $data = $this->request->getJSON(true);
