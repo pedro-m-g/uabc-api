@@ -1,9 +1,8 @@
 import { Link, Head } from '@inertiajs/react';
-import { PageProps } from '@/types';
 import Guest from '@/Layouts/GuestLayout';
 import PrimaryButton from '@/Components/PrimaryButton';
 
-export default function Welcome({ auth, laravelVersion, phpVersion }: PageProps<{ laravelVersion: string, phpVersion: string }>) {
+export default function Welcome() {
     return (
         <Guest>
             <Head title='Inicio' />
