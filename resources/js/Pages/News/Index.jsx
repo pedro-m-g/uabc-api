@@ -1,8 +1,7 @@
 import Authenticated from "@/Layouts/AuthenticatedLayout";
-import { PageProps } from "@/types";
 import { Head } from "@inertiajs/react";
 
-export default function Index({ auth }: PageProps) {
+export default function Index({ auth }) {
     return (
         <Authenticated
             user={auth.user}

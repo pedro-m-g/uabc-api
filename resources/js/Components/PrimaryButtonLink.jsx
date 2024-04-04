@@ -1,6 +1,6 @@
-import { Link, InertiaLinkProps  } from '@inertiajs/react';
+import { Link  } from '@inertiajs/react';
 
-export default function PrimaryButtonLink({ href, className = '', disabled, children, ...props }: InertiaLinkProps & { href: string }) {
+export default function PrimaryButtonLink({ href, className = '', disabled, children, ...props }) {
     return (
         <Link
             href={href}
