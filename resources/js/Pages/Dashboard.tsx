@@ -2,6 +2,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import PrimaryButton from '@/Components/PrimaryButton';
+import PrimaryButtonLink from '@/Components/PrimaryButtonLink';
 
 export default function Dashboard({ auth }: PageProps) {
     return (
@@ -20,9 +21,9 @@ export default function Dashboard({ auth }: PageProps) {
                                 <strong>&nbsp;{auth.user.name}</strong>
                             </p>
                             <div className='my-8 grid gap-8 grid-cols-3'>
-                                <PrimaryButton>
+                                <PrimaryButtonLink href={route('news.index')}>
                                     Noticias
-                                </PrimaryButton>
+                                </PrimaryButtonLink>
                                 <PrimaryButton>
                                     Calendario de actividades
                                 </PrimaryButton>
