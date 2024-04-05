@@ -7,9 +7,18 @@ use App\Models\NewsArticle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use Spatie\LaravelMarkdown\MarkdownRenderer;
 
 class NewsArticleController extends Controller
 {
+
+    private MarkdownRenderer $markdownRenderer;
+
+    public function __construct(MarkdownRenderer $markdownRenderer)
+    {
+        $this->markdownRenderer = $markdownRenderer;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -44,7 +53,9 @@ class NewsArticleController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $article = NewsArticle::findOrFail($id);
+        $html = $this->markdownRenderer->toHtml($article->content);
+        return response($html);
     }
 
     /**
