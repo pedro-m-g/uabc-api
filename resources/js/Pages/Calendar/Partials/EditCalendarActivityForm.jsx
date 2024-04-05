@@ -18,7 +18,7 @@ export default function EditCalendarActivity({ activity }) {
 
     const submit = (e) => {
         e.preventDefault();
-        if (article.id) {
+        if (activity.id) {
             put(route('calendar.update', activity));
         } else {
             post(route('calendar.store'));

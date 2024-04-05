@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\News;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreNewsArticleRequest extends FormRequest
+class StoreCalendarActivityRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,11 @@ class StoreNewsArticleRequest extends FormRequest
     {
         return [
             'title' => 'required|max:255',
-            'content' => 'required',
-            'published_at' => 'required|date|after_or_equal:today'
+            'start_date' => 'required|date',
+            'start_time' => 'required_unless:is_all_day,true|date_format:H:i:s',
+            'end_date' => 'required|date',
+            'end_time' => 'required_unless:is_all_day,true|date_format:H:i:s',
+            'is_all_day' => 'required|boolean'
         ];
     }
 }

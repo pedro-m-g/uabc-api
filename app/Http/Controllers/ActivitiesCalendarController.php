@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCalendarActivityRequest;
 use App\Models\CalendarActivity;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class ActivitiesCalendarController extends Controller
@@ -13,7 +15,10 @@ class ActivitiesCalendarController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Calendar/Index');
+        $activities = CalendarActivity::all();
+        return Inertia::render('Calendar/Index', [
+            'activities' => $activities
+        ]);
     }
 
     /**
@@ -48,9 +53,11 @@ class ActivitiesCalendarController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCalendarActivityRequest $request)
     {
-        //
+        $activityData = $request->validated();
+        CalendarActivity::create($activityData);
+        return Redirect::route('calendar.index');
     }
 
     /**
@@ -58,7 +65,10 @@ class ActivitiesCalendarController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $activity = CalendarActivity::findOrFail($id);
+        return Inertia::render('Calendar/Show', [
+            'activity' => $activity
+        ]);
     }
 
     /**
@@ -66,15 +76,22 @@ class ActivitiesCalendarController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $activity = CalendarActivity::findOrFail($id);
+        return Inertia::render('Calendar/Edit', [
+            'activity' => $activity
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreCalendarActivityRequest $request, string $id)
     {
-        //
+        $activityData = $request->validated();
+        $activity = CalendarActivity::findOrFail($id);
+        $activity->fill($activityData);
+        $activity->save();
+        return Redirect::route('calendar.index');
     }
 
     /**
@@ -82,6 +99,8 @@ class ActivitiesCalendarController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $activity = CalendarActivity::findOrFail($id);
+        $activity->delete();
+        return Redirect::route('calendar.index');
     }
 }

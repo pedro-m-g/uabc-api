@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\News\StoreNewsArticleRequest;
+use App\Http\Requests\StoreNewsArticleRequest;
 use App\Models\NewsArticle;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;

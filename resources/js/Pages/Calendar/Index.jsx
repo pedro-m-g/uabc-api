@@ -5,7 +5,19 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import esLocale from '@fullcalendar/core/locales/es';
 
-export default function Index({ auth }) {
+export default function Index({ auth, activities }) {
+    const events = activities.map(activity => ({
+        id: activity.id,
+        title: activity.title,
+        start: activity.is_all_day
+            ? `${activity.start_date}T${activity.start_time}`
+            : activity.start_date,
+        end: activity.is_all_day
+            ? `${activity.end_date}T${activity.end_time}`
+            : activity.end_date,
+        allDay: activity.is_all_day
+    }));
+
     const selectDate = (selectionInfo) => {
         window.location.href = route('calendar.create', {
             startDate: selectionInfo.startStr,
@@ -13,6 +25,10 @@ export default function Index({ auth }) {
             isAllDay: selectionInfo.allDay
         });
     };
+
+    const selectEvent = (eventClickInfo) => {
+        window.location.href = route('calendar.show', eventClickInfo.event.id);
+    }
 
     return (
         <Authenticated
@@ -41,6 +57,8 @@ export default function Index({ auth }) {
                                 selectable={true}
                                 selectMirror={true}
                                 select={selectDate}
+                                events={events}
+                                eventClick={selectEvent}
                             />
                         </div>
                     </div>
