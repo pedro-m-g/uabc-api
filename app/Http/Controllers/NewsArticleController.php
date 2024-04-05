@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\News\StoreNewsArticleRequest;
 use App\Models\NewsArticle;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
@@ -86,6 +85,8 @@ class NewsArticleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $article = NewsArticle::findOrFail($id);
+        $article->delete();
+        return Redirect::route('news.index');
     }
 }

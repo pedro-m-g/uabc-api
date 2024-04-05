@@ -3,14 +3,25 @@ import { Head } from "@inertiajs/react";
 import PrimaryButtonLink from '@/Components/PrimaryButtonLink'
 import Table from '@/Components/Table'
 import SecondaryButtonLink from '@/Components/SecondaryButtonLink'
+import DeleteArticleForm from "./Partials/DeleteArticleForm";
+import DangerButton from "@/Components/DangerButton";
+import { useState } from "react";
 
 export default function Index({ auth, articles }) {
+    const [articleToDelete, setArticleToDelete] = useState();
+
     return (
         <Authenticated
             user={auth.user}
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Noticias</h2>}
         >
             <Head title="Noticias" />
+
+            <DeleteArticleForm
+                article={articleToDelete}
+                show={!!articleToDelete}
+                onClose={() => setArticleToDelete(null)}
+            />
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -48,9 +59,9 @@ export default function Index({ auth, articles }) {
                                                 <SecondaryButtonLink href={route('news.edit', article)}>
                                                     Editar
                                                 </SecondaryButtonLink>
-                                                <SecondaryButtonLink href={route('news.show', article)}>
+                                                <DangerButton onClick={() => setArticleToDelete(article)}>
                                                     Eliminar
-                                                </SecondaryButtonLink>
+                                                </DangerButton>
                                             </div>
                                         </td>
                                     </tr>
