@@ -2,6 +2,7 @@ import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import PrimaryButtonLink from '@/Components/PrimaryButtonLink'
 import Table from '@/Components/Table'
+import SecondaryButtonLink from '@/Components/SecondaryButtonLink'
 
 export default function Index({ auth, articles }) {
     return (
@@ -39,8 +40,18 @@ export default function Index({ auth, articles }) {
                                         <td className="border border-gray-400 px-4">
                                             {article.published_at}
                                         </td>
-                                        <td className="border border-gray-400 px-4">
-
+                                        <td className="border border-gray-400 p-4">
+                                            <div className="flex gap-4">
+                                                <SecondaryButtonLink href={route('news.show', article)}>
+                                                    Vista previa
+                                                </SecondaryButtonLink>
+                                                <SecondaryButtonLink href={route('news.edit', article)}>
+                                                    Editar
+                                                </SecondaryButtonLink>
+                                                <SecondaryButtonLink href={route('news.show', article)}>
+                                                    Eliminar
+                                                </SecondaryButtonLink>
+                                            </div>
                                         </td>
                                     </tr>
                                 ))}
