@@ -2,13 +2,7 @@ import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 import EditArticleForm from "./Partials/EditArticleForm";
 
-export default function Create({ auth }) {
-    const article = {
-        id: '',
-        title: '',
-        content: '',
-        published_at: ''
-    };
+export default function Edit({ auth, article }) {
     return (
         <Authenticated
             user={auth.user}
@@ -17,11 +11,11 @@ export default function Create({ auth }) {
                     <Link href={route('news.index')}>
                         <span className="underline">Noticias</span>
                     </Link>
-                    &nbsp;&gt; Crear arículo
+                    &nbsp;&gt; Editar artículo #{article.id}
                 </h2>
             }
         >
-            <Head title="Noticias - Crear artículo" />
+            <Head title={`Noticias - Editar artículo #${article.id}`} />
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">

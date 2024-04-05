@@ -63,15 +63,22 @@ class NewsArticleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $article = NewsArticle::findOrFail($id);
+        return Inertia::render('News/Edit', [
+            'article' => $article
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreNewsArticleRequest $request, string $id)
     {
-        //
+        $article = NewsArticle::findOrFail($id);
+        $articleData = $request->validated();
+        $article->fill($articleData);
+        $article->save();
+        return Redirect::route('news.index');
     }
 
     /**
