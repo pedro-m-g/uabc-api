@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\News\StoreNewsArticleRequest;
+use App\Models\NewsArticle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class NewsArticleController extends Controller
@@ -12,7 +15,10 @@ class NewsArticleController extends Controller
      */
     public function index()
     {
-        return Inertia::render('News/Index');
+        $articles = NewsArticle::simplePaginate();
+        return Inertia::render('News/Index', [
+            'articles' => $articles
+        ]);
     }
 
     /**
@@ -20,15 +26,17 @@ class NewsArticleController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('News/Create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreNewsArticleRequest $request)
     {
-        //
+        $articleData = $request->validated();
+        NewsArticle::create($articleData);
+        return Redirect::route('news.index');
     }
 
     /**
