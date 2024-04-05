@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivitiesCalendarController;
 use App\Http\Controllers\NewsArticleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('/news', NewsArticleController::class);
+    Route::resource('/calendar', ActivitiesCalendarController::class);
 });
 
 require __DIR__ . '/auth.php';

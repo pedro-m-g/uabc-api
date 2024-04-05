@@ -23,9 +23,9 @@ export default function Dashboard({ auth }) {
                                 <PrimaryButtonLink href={route('news.index')}>
                                     Noticias
                                 </PrimaryButtonLink>
-                                <PrimaryButton>
+                                <PrimaryButtonLink href={route('calendar.index')}>
                                     Calendario de actividades
-                                </PrimaryButton>
+                                </PrimaryButtonLink>
                                 <PrimaryButton>
                                     Asesorías
                                 </PrimaryButton>
