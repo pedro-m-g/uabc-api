@@ -24,7 +24,7 @@ class StoreNewsArticleRequest extends FormRequest
         return [
             'title' => 'required|max:255',
             'content' => 'required',
-            'published_at' => 'required|date|before_or_equal:today'
+            'published_at' => 'required|date|after_or_equal:today'
         ];
     }
 }
