@@ -5,6 +5,7 @@ import Table from '@/Components/Table'
 import SecondaryButtonLink from '@/Components/SecondaryButtonLink'
 import DeleteArticleForm from "./Partials/DeleteArticleForm";
 import DangerButton from "@/Components/DangerButton";
+import Pagination from "@/Components/Pagination";
 import { useState } from "react";
 
 export default function Index({ auth, articles }) {
@@ -67,6 +68,9 @@ export default function Index({ auth, articles }) {
                                     </tr>
                                 ))}
                             </Table>
+                            <Pagination
+                                {...articles}
+                            />
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 import { Link } from '@inertiajs/react'
 
-export default function SecondaryButton({ href, type = 'button', className = '', disabled, children, ...props }) {
+export default function SecondaryButtonLink({ href, type = 'button', className = '', disabled, children, ...props }) {
     return (
         <Link
             href={href}

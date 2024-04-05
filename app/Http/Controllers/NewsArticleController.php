@@ -23,7 +23,7 @@ class NewsArticleController extends Controller
      */
     public function index()
     {
-        $articles = NewsArticle::simplePaginate();
+        $articles = NewsArticle::paginate();
         return Inertia::render('News/Index', [
             'articles' => $articles
         ]);

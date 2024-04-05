@@ -7,16 +7,12 @@ import MarkdownEditor from '@uiw/react-markdown-editor';
 import { Transition } from '@headlessui/react';
 
 export default function EditArticleForm({ article }) {
-    const currentDate = new Date();
-    currentDate.setDate(currentDate.getDate() - 1);
-    const minDate = currentDate
-        .toISOString()
-        .split('T')[0];
+    const today = new Date().toISOString().split('T')[0];
 
     const { data, setData, post, put, errors, processing, recentlySuccessful } = useForm({
         title: article.title,
         content: article.content,
-        published_at: article.published_at || minDate
+        published_at: article.published_at || today
     });
 
     const submit = (e) => {
@@ -50,7 +46,7 @@ export default function EditArticleForm({ article }) {
                     id="published_at"
                     className="mt-1 block w-full"
                     type="date"
-                    min={minDate}
+                    min={today}
                     value={data.published_at}
                     onChange={(e) => setData('published_at', e.target.value)}
                     required
