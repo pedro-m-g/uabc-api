@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActivitiesCalendarController;
+use App\Http\Controllers\CoachController;
 use App\Http\Controllers\NewsArticleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/news', NewsArticleController::class);
     Route::resource('/calendar', ActivitiesCalendarController::class);
+    Route::resource('/coaches', CoachController::class);
 });
 
 require __DIR__ . '/auth.php';

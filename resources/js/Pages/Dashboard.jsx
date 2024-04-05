@@ -26,9 +26,9 @@ export default function Dashboard({ auth }) {
                                 <PrimaryButtonLink href={route('calendar.index')}>
                                     Calendario de actividades
                                 </PrimaryButtonLink>
-                                <PrimaryButton>
+                                <PrimaryButtonLink href={route('coaches.index')}>
                                     Asesorías
-                                </PrimaryButton>
+                                </PrimaryButtonLink>
                                 <PrimaryButton>
                                     Trámites escolares
                                 </PrimaryButton>
