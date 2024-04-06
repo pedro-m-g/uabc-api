@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\DateMultiFormat;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCoachRequest extends FormRequest
@@ -31,18 +32,54 @@ class StoreCoachRequest extends FormRequest
             'is_available_thursday' => 'required|boolean',
             'is_available_friday' => 'required|boolean',
             'is_available_saturday' => 'required|boolean',
-            'monday_start_time' => 'required_if_accepted:is_available_monday|date_format:H:i',
-            'monday_end_time' => 'required_if_accepted:is_available_monday|date_format:H:i',
-            'tuesday_start_time' => 'required_if_accepted:is_available_tuesday|date_format:H:i',
-            'tuesday_end_time' => 'required_if_accepted:is_available_tuesday|date_format:H:i',
-            'wednesday_start_time' => 'required_if_accepted:is_available_wednesday|date_format:H:i',
-            'wednesday_end_time' => 'required_if_accepted:is_available_wednesday|date_format:H:i',
-            'thursday_start_time' => 'required_if_accepted:is_available_thursday|date_format:H:i',
-            'thursday_end_time' => 'required_if_accepted:is_available_thursday|date_format:H:i',
-            'friday_start_time' => 'required_if_accepted:is_available_friday|date_format:H:i',
-            'friday_end_time' => 'required_if_accepted:is_available_friday|date_format:H:i',
-            'saturday_start_time' => 'required_if_accepted:is_available_saturday|date_format:H:i',
-            'saturday_end_time' => 'required_if_accepted:is_available_saturday|date_format:H:i'
+            'monday_start_time' => [
+                'required_if_accepted:is_available_monday',
+                new DateMultiFormat(['H:i', 'H:i:s'])
+            ],
+            'monday_end_time' => [
+                'required_if_accepted:is_available_monday',
+                new DateMultiFormat(['H:i', 'H:i:s'])
+            ],
+            'tuesday_start_time' => [
+                'required_if_accepted:is_available_tuesday',
+                new DateMultiFormat(['H:i', 'H:i:s'])
+            ],
+            'tuesday_end_time' => [
+                'required_if_accepted:is_available_tuesday',
+                new DateMultiFormat(['H:i', 'H:i:s'])
+            ],
+            'wednesday_start_time' => [
+                'required_if_accepted:is_available_wednesday',
+                new DateMultiFormat(['H:i', 'H:i:s'])
+            ],
+            'wednesday_end_time' => [
+                'required_if_accepted:is_available_wednesday',
+                new DateMultiFormat(['H:i', 'H:i:s'])
+            ],
+            'thursday_start_time' => [
+                'required_if_accepted:is_available_thursday',
+                new DateMultiFormat(['H:i', 'H:i:s'])
+            ],
+            'thursday_end_time' => [
+                'required_if_accepted:is_available_thursday',
+                new DateMultiFormat(['H:i', 'H:i:s'])
+            ],
+            'friday_start_time' => [
+                'required_if_accepted:is_available_friday',
+                new DateMultiFormat(['H:i', 'H:i:s'])
+            ],
+            'friday_end_time' => [
+                'required_if_accepted:is_available_friday',
+                new DateMultiFormat(['H:i', 'H:i:s'])
+            ],
+            'saturday_start_time' => [
+                'required_if_accepted:is_available_saturday',
+                new DateMultiFormat(['H:i', 'H:i:s'])
+            ],
+            'saturday_end_time' => [
+                'required_if_accepted:is_available_saturday',
+                new DateMultiFormat(['H:i', 'H:i:s'])
+            ]
         ];
     }
 }

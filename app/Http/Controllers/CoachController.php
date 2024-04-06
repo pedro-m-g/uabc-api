@@ -55,15 +55,22 @@ class CoachController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $coach = Coach::findOrFail($id);
+        return Inertia::render('Coaches/Edit', [
+            'coach' => $coach
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreCoachRequest $request, string $id)
     {
-        //
+        $coachData = $request->validated();
+        $coach = Coach::findOrFail($id);
+        $coach->fill($coachData);
+        $coach->save();
+        return Redirect::route('coaches.index');
     }
 
     /**
@@ -71,6 +78,8 @@ class CoachController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $coach = Coach::findOrFail($id);
+        $coach->delete();
+        return Redirect::route('coaches.index');
     }
 }
