@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActivitiesCalendarController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\NewsArticleController;
+use App\Http\Controllers\ProceduresController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -23,6 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/news', NewsArticleController::class);
     Route::resource('/calendar', ActivitiesCalendarController::class);
     Route::resource('/coaches', CoachController::class);
+    Route::resource('/procedures', ProceduresController::class);
 });
 
 require __DIR__ . '/auth.php';

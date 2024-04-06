@@ -29,9 +29,9 @@ export default function Dashboard({ auth }) {
                                 <PrimaryButtonLink href={route('coaches.index')}>
                                     Asesorías
                                 </PrimaryButtonLink>
-                                <PrimaryButton>
+                                <PrimaryButtonLink href={route('procedures.index')}>
                                     Trámites escolares
-                                </PrimaryButton>
+                                </PrimaryButtonLink>
                                 <PrimaryButton>
                                     Programas de Servicio Social
                                 </PrimaryButton>
