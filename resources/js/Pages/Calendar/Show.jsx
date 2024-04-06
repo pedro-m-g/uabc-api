@@ -30,7 +30,7 @@ export default function Show({ auth, activity }) {
                 </h2>
             }
         >
-            <Head title="Calendario de Actividades" />
+            <Head title={`Calendario de Actividades - Evento #${activity.id}`} />
 
             <DeleteCalendarActivityForm
                 activity={activity}

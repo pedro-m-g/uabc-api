@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCoachRequest;
 use App\Models\Coach;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class CoachController extends Controller
@@ -24,15 +26,17 @@ class CoachController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Coaches/Create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCoachRequest $request)
     {
-        //
+        $coachData = $request->validated();
+        Coach::create($coachData);
+        return Redirect::route('coaches.index');
     }
 
     /**

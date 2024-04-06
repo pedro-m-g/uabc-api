@@ -17,7 +17,7 @@ export default function Edit({ auth, activity }) {
                 </h2>
             }
         >
-            <Head title="Calendario de Actividades" />
+            <Head title={`Calendario de Actividades - Editar evento #${activity.id}`} />
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
