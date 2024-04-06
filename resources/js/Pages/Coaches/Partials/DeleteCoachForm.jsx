@@ -7,7 +7,7 @@ export default function DeleteCoachForm({ coach, show, onClose }) {
     const { delete: destroy } = useForm({});
 
     const submit = () => {
-        destroy(route('coach.destroy', coach));
+        destroy(route('coaches.destroy', coach));
         onClose();
     };
 
