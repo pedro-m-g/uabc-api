@@ -54,7 +54,7 @@ export default function Index({ auth, articles }) {
                                         </td>
                                         <td className="border border-gray-400 p-4">
                                             <div className="flex gap-4">
-                                                <SecondaryButtonLink href={route('news.show', article)} target="_blank">
+                                                <SecondaryButtonLink href={route('news.show', article)}>
                                                     Vista previa
                                                 </SecondaryButtonLink>
                                                 <SecondaryButtonLink href={route('news.edit', article)}>

@@ -54,7 +54,10 @@ class NewsArticleController extends Controller
     {
         $article = NewsArticle::findOrFail($id);
         $html = $this->markdownRenderer->toHtml($article->content);
-        return response($html);
+        return Inertia::render('News/Show', [
+            'id' => $article->id,
+            'content' => $html
+        ]);
     }
 
     /**
