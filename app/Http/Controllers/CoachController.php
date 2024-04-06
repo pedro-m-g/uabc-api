@@ -44,7 +44,10 @@ class CoachController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $coach = Coach::findOrFail($id);
+        return Inertia::render('Coaches/Show', [
+            'coach' => $coach
+        ]);
     }
 
     /**
