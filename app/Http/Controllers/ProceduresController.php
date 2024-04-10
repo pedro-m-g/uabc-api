@@ -24,7 +24,7 @@ class ProceduresController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Procedures/Create');
     }
 
     /**

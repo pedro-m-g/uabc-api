@@ -3,24 +3,20 @@ import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import MarkdownEditor from '@uiw/react-markdown-editor';
 import { Transition } from '@headlessui/react';
 
-export default function EditArticleForm({ article }) {
-    const today = new Date().toISOString().split('T')[0];
-
+export default function EditProcedureForm({ procedure }) {
     const { data, setData, post, put, errors, processing, recentlySuccessful } = useForm({
-        title: article.title,
-        content: article.content,
-        published_at: article.published_at || today
+        title: procedure.title,
+        steps: procedure.steps
     });
 
     const submit = (e) => {
         e.preventDefault();
-        if (article.id) {
-            put(route('news.update', article));
+        if (procedure.id) {
+            put(route('procedure.update', procedure));
         } else {
-            post(route('news.store'));
+            post(route('procedure.store'));
         }
     }
 
@@ -39,34 +35,7 @@ export default function EditArticleForm({ article }) {
 
                 <InputError className="mt-2" message={errors.title} />
             </div>
-            <div>
-                <InputLabel htmlFor="published_at" value="Fecha de publicación" />
 
-                <TextInput
-                    id="published_at"
-                    className="mt-1 block w-full"
-                    type="date"
-                    min={today}
-                    value={data.published_at}
-                    onChange={(e) => setData('published_at', e.target.value)}
-                    required
-                />
-
-                <InputError className="mt-2" message={errors.title} />
-            </div>
-            <div>
-                <InputLabel htmlFor="content" value="Contenido" />
-
-                <MarkdownEditor
-                    id='content'
-                    className='mt-1 block w-full h-96'
-                    value={data.content}
-                    onChange={(value) => setData('content', value)}
-                    required
-                />
-
-                <InputError className="mt-2" message={errors.content} />
-            </div>
             <div className="flex items-center gap-4">
                 <PrimaryButton disabled={processing}>Guardar</PrimaryButton>
 
