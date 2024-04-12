@@ -30,7 +30,25 @@ export default function Index({ auth, procedures }) {
                             <PrimaryButtonLink href={route('procedures.create')}>
                                 Registrar trámite
                             </PrimaryButtonLink>
-                            
+                            <div className="py-4 border-collapse">
+                                {procedures.data.map(procedure => (
+                                    <div className="border border-gray-300 flex items-center p-2">
+                                        <div className="px-4">#{procedure.id}:</div>
+                                        <div className="flex-1">{procedure.title}</div>
+                                        <div className="flex space-x-4">
+                                            <SecondaryButtonLink>
+                                                Vista previa
+                                            </SecondaryButtonLink>
+                                            <SecondaryButtonLink>
+                                                Editar
+                                            </SecondaryButtonLink>
+                                            <DangerButton>
+                                                Eliminar
+                                            </DangerButton>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                             <Pagination
                                 {...procedures}
                             />

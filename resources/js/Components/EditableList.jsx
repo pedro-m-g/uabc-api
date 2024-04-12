@@ -1,5 +1,5 @@
 import SecondaryButton from './SecondaryButton';
-import InputLabel from './InputLabel';
+import DangerButton from './DangerButton';
 import TextInput from './TextInput';
 import InputError from './InputError';
 
@@ -17,22 +17,40 @@ export default function EditableList({ value, onChange, errors }) {
         return [...value, ''];
     };
 
+    const deleteListItem = (index) =>
+        value.filter((_, oldIndex) => oldIndex !== index);
+
     return (
         <div className='space-y-4'>
             {value.map((_, index) => (
                 <div key={index}>
-                    <div>
-                        <InputLabel htmlFor={`steps.${index + 1}`} value={`Paso #${index + 1}`} />
-
+                    <div className='flex'>
+                        <div
+                            className="flex items-center justify-center px-4 bg-blue-400 text-white"
+                        >
+                            <span>{index + 1}</span>
+                        </div>
                         <TextInput
                             id={`steps.${index + 1}`}
-                            className="mt-1 block w-full"
+                            className='flex-1'
                             value={value[index]}
                             onChange={(e) => onChange(editListItem(index, e.target.value))}
                             required
                         />
-
-                        <InputError className="mt-2" message={errors?.steps?.[index]} />
+                        <div className='flex items-stretch'>
+                            <DangerButton
+                                disabled={index === 0}
+                                onClick={() => onChange(deleteListItem(index))}
+                                tyoe="button"
+                            >
+                                &times;
+                            </DangerButton>
+                        </div>
+                    </div>
+                    <div>
+                        <InputError
+                            message={errors?.steps?.[index]}
+                        />
                     </div>
                 </div>
             ))}
