@@ -78,6 +78,8 @@ class ProceduresController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $procedure = Procedure::findOrFail($id);
+        $procedure->delete();
+        return Redirect::route('procedures.index');
     }
 }

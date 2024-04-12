@@ -45,7 +45,7 @@ export default function Index({ auth, procedures }) {
                                             <SecondaryButtonLink href={route('procedures.edit', procedure)}>
                                                 Editar
                                             </SecondaryButtonLink>
-                                            <DangerButton>
+                                            <DangerButton onClick={() => setProcedureToDelete(procedure)}>
                                                 Eliminar
                                             </DangerButton>
                                         </div>
