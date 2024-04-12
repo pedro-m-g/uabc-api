@@ -14,7 +14,7 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Welcome');
-})->middleware('guest');
+})->middleware('guest')->name('welcome');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
