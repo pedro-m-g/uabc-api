@@ -44,7 +44,10 @@ class ProceduresController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $procedure = Procedure::findOrFail($id);
+        return Inertia::render('Procedures/Show', [
+            'procedure' => $procedure
+        ]);
     }
 
     /**
