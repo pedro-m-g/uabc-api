@@ -5,7 +5,7 @@ import EditProcedureForm from "./Partials/EditProcedureForm";
 export default function Create({ auth }) {
     const procedure = {
         title: '',
-        steps: []
+        steps: ['']
     };
     return (
         <Authenticated

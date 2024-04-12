@@ -3,6 +3,7 @@ import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
+import EditableList from '@/Components/EditableList';
 import { Transition } from '@headlessui/react';
 
 export default function EditProcedureForm({ procedure }) {
@@ -14,9 +15,9 @@ export default function EditProcedureForm({ procedure }) {
     const submit = (e) => {
         e.preventDefault();
         if (procedure.id) {
-            put(route('procedure.update', procedure));
+            put(route('procedures.update', procedure));
         } else {
-            post(route('procedure.store'));
+            post(route('procedures.store'));
         }
     }
 
@@ -34,6 +35,14 @@ export default function EditProcedureForm({ procedure }) {
                 />
 
                 <InputError className="mt-2" message={errors.title} />
+            </div>
+
+            <div>
+                <EditableList
+                    value={data.steps}
+                    onChange={(newList) => setData('steps', newList)}
+                    errors={data.errors?.steps}
+                />
             </div>
 
             <div className="flex items-center gap-4">

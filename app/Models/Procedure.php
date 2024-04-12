@@ -13,4 +13,11 @@ class Procedure extends Model
         'title',
         'steps'
     ];
+
+    protected function casts()
+    {
+        return [
+            'steps' => 'array'
+        ];
+    }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProcedureRequest;
 use App\Models\Procedure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class ProceduresController extends Controller
@@ -30,9 +32,11 @@ class ProceduresController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProcedureRequest $request)
     {
-        //
+        $procedureData = $request->validated();
+        Procedure::create($procedureData);
+        return Redirect::route('procedures.index');
     }
 
     /**
