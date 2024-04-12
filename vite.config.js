@@ -4,10 +4,6 @@ import react from '@vitejs/plugin-react';
 import { fileURLToPath } from 'node:url'
 
 export default defineConfig({
-    build: {
-        copyPublicDir: true,
-        outDir: 'public'
-    },
     plugins: [
         laravel({
             input: 'resources/js/app.jsx',
