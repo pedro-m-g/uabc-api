@@ -42,7 +42,7 @@ export default function Index({ auth, procedures }) {
                                             <SecondaryButtonLink href={route('procedures.show', procedure)}>
                                                 Vista previa
                                             </SecondaryButtonLink>
-                                            <SecondaryButtonLink>
+                                            <SecondaryButtonLink href={route('procedures.edit', procedure)}>
                                                 Editar
                                             </SecondaryButtonLink>
                                             <DangerButton>

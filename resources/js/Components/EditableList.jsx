@@ -40,7 +40,10 @@ export default function EditableList({ value, onChange, errors }) {
                         <div className='flex items-stretch'>
                             <DangerButton
                                 disabled={index === 0}
-                                onClick={() => onChange(deleteListItem(index))}
+                                onClick={(evt) => {
+                                    evt.preventDefault();
+                                    onChange(deleteListItem(index))
+                                }}
                                 tyoe="button"
                             >
                                 &times;

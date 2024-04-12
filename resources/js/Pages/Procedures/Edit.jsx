@@ -1,28 +1,28 @@
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
-import EditArticleForm from "./Partials/EditArticleForm";
+import EditProcedureForm from "./Partials/EditProcedureForm";
 
-export default function Edit({ auth, article }) {
+export default function Edit({ auth, procedure }) {
     return (
         <Authenticated
             user={auth.user}
             header={
                 <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    <Link href={route('news.index')}>
-                        <span className="underline">Noticias</span>
+                    <Link href={route('procedures.index')}>
+                        <span className="underline">Trámites</span>
                     </Link>
-                    &nbsp;&gt; Editar artículo #{article.id}
+                    &nbsp;&gt; Editar trámite #{procedure.id}
                 </h2>
             }
         >
-            <Head title={`Noticias - Editar artículo #${article.id}`} />
+            <Head title={`Trámites - Editar trámite #${procedure.id}`} />
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900">
-                            <EditArticleForm
-                                article={article}
+                            <EditProcedureForm
+                                procedure={procedure}
                             />
                         </div>
                     </div>

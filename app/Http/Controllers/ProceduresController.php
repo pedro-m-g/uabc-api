@@ -55,15 +55,22 @@ class ProceduresController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $procedure = Procedure::findOrFail($id);
+        return Inertia::render('Procedures/Edit', [
+            'procedure' => $procedure
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreProcedureRequest $request, string $id)
     {
-        //
+        $procedureData = $request->validated();
+        $procedure = Procedure::findOrFail($id);
+        $procedure->fill($procedureData);
+        $procedure->save();
+        return Redirect::route('procedures.index');
     }
 
     /**
