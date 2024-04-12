@@ -1,5 +1,7 @@
+import logo from '../images/logo-uabc.png';
+
 export default function ApplicationLogo(props) {
     return (
-        <img src='/images/logo-uabc.png' alt='Escudo Oficial UABC' {...props} />
+        <img src={logo} alt='Escudo Oficial UABC' {...props} />
     );
 }
