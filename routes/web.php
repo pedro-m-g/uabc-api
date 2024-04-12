@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\ActivitiesCalendarController;
+use App\Http\Controllers\Api\CalendarApiController;
+use App\Http\Controllers\Api\CoachingApiController;
+use App\Http\Controllers\Api\NewsApiController;
+use App\Http\Controllers\Api\ProceduresApiController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\NewsArticleController;
 use App\Http\Controllers\ProceduresController;
@@ -25,6 +29,20 @@ Route::middleware('auth')->group(function () {
     Route::resource('/calendar', ActivitiesCalendarController::class);
     Route::resource('/coaches', CoachController::class);
     Route::resource('/procedures', ProceduresController::class);
+});
+
+Route::prefix('api')->middleware('api')->group(function () {
+    Route::get('/news', [NewsApiController::class, 'getNews']);
+    Route::get('/news/{id}', [NewsApiController::class, 'getArticle']);
+
+    Route::get('/calendar', [CalendarApiController::class, 'getCalendar']);
+    Route::get('/calendar/{id}', [CalendarApiController::class, 'getActivity']);
+
+    Route::get('/coaches', [CoachingApiController::class, 'getCoaches']);
+    Route::get('/coaches/{id}', [CoachingApiController::class, 'getCoach']);
+
+    Route::get('/procedures', [ProceduresApiController::class, 'getProcedures']);
+    Route::get('/procedures/{id}', [ProceduresApiController::class, 'getProcedure']);
 });
 
 require __DIR__ . '/auth.php';
