@@ -1,6 +1,7 @@
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 import Table from '@/Components/Table';
+import PropTypes from "prop-types";
 
 export default function Show({ auth, coach }) {
     const weekdays = {
@@ -14,7 +15,12 @@ export default function Show({ auth, coach }) {
 
     const schedule = Object.keys(weekdays)
         .filter(day => coach[`is_available_${day}`])
-        .map(day => `${weekdays[day]} de ${coach[`${day}_start_time`]} a ${coach[`${day}_end_time`]}`);
+        .map(day => {
+            const weekDay =weekdays[day];
+            const startTime =coach[`${day}_start_time`];
+            const endTime = coach[`${day}_end_time`];
+            return `${weekDay} de ${startTime} a ${endTime}`;
+        });
 
     return (
         <Authenticated
@@ -84,3 +90,10 @@ export default function Show({ auth, coach }) {
         </Authenticated>
     );
 }
+
+Show.propTypes = {
+    auth: PropTypes.object({
+        user: PropTypes.object()
+    }),
+    coach: PropTypes.object()
+};
