@@ -42,53 +42,47 @@ export default function Show({ auth, activity }) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900">
-                            <div className="grid grid-cols-2">
-                                <Table>
-                                    <tr>
-                                        <td className="bg-gray-300 border border-gray-400 p-2">
-                                            <strong>ID</strong>
-                                        </td>
-                                        <td className="border border-gray-400 p-2">
-                                            {activity.id}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="bg-gray-300 border border-gray-400 p-2">
-                                            <strong>Título</strong>
-                                        </td>
-                                        <td className="border border-gray-400 p-2">
-                                            {activity.title}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="bg-gray-300 border border-gray-400 p-2">
-                                            <strong>Fecha de inicio</strong>
-                                        </td>
-                                        <td className="border border-gray-400 p-2">
-                                            {new Date(startDate).toLocaleDateString()}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="bg-gray-300 border border-gray-400 p-2">
-                                            <strong>Fecha de fin</strong>
-                                        </td>
-                                        <td className="border border-gray-400 p-2">
-                                            {new Date(endDate).toLocaleDateString()}
-                                        </td>
-                                    </tr>
-                                </Table>
-                                <div className="p-4 space-y-4">
-                                    <div>
-                                        <SecondaryButtonLink href={route('calendar.edit', activity)}>
-                                            Editar
-                                        </SecondaryButtonLink>
-                                    </div>
-                                    <div>
-                                        <DangerButton onClick={() => setShowDeleteForm(true)}>
-                                            Eliminar
-                                        </DangerButton>
-                                    </div>
-                                </div>
+                            <Table>
+                                <tr>
+                                    <td className="bg-gray-300 border border-gray-400 p-2">
+                                        <strong>ID</strong>
+                                    </td>
+                                    <td className="border border-gray-400 p-2">
+                                        {activity.id}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td className="bg-gray-300 border border-gray-400 p-2">
+                                        <strong>Título</strong>
+                                    </td>
+                                    <td className="border border-gray-400 p-2">
+                                        {activity.title}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td className="bg-gray-300 border border-gray-400 p-2">
+                                        <strong>Fecha de inicio</strong>
+                                    </td>
+                                    <td className="border border-gray-400 p-2">
+                                        {new Date(startDate).toLocaleDateString()}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td className="bg-gray-300 border border-gray-400 p-2">
+                                        <strong>Fecha de fin</strong>
+                                    </td>
+                                    <td className="border border-gray-400 p-2">
+                                        {new Date(endDate).toLocaleDateString()}
+                                    </td>
+                                </tr>
+                            </Table>
+                            <div className="py-4 space-x-4">
+                                <SecondaryButtonLink href={route('calendar.edit', activity)}>
+                                    Editar
+                                </SecondaryButtonLink>
+                                <DangerButton onClick={() => setShowDeleteForm(true)}>
+                                    Eliminar
+                                </DangerButton>
                             </div>
                         </div>
                     </div>
