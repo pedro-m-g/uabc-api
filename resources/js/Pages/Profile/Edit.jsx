@@ -3,6 +3,7 @@ import DeleteUserForm from './Partials/DeleteUserForm';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm';
 import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm';
 import { Head } from '@inertiajs/react';
+import PropTypes from 'prop-types';
 
 export default function Edit({ auth, mustVerifyEmail, status }) {
     return (
@@ -34,3 +35,11 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
         </AuthenticatedLayout>
     );
 }
+
+Edit.propTypes = {
+    auth: PropTypes.object({
+        user: PropTypes.object()
+    }),
+    mustVerifyEmail: PropTypes.bool(),
+    status: PropTypes.string()
+};
