@@ -2,6 +2,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import PrimaryButton from '@/Components/PrimaryButton';
 import PrimaryButtonLink from '@/Components/PrimaryButtonLink';
+import PropTypes from 'prop-types';
 
 export default function Dashboard({ auth }) {
     return (
@@ -16,8 +17,7 @@ export default function Dashboard({ auth }) {
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900">
                             <p>
-                                Hola de nuevo
-                                <strong>&nbsp;{auth.user.name}</strong>
+                                Hola de nuevo <strong>&nbsp;{auth.user.name}</strong>
                             </p>
                             <div className='my-8 grid gap-8 grid-cols-3'>
                                 <PrimaryButtonLink href={route('news.index')}>
@@ -55,3 +55,9 @@ export default function Dashboard({ auth }) {
         </AuthenticatedLayout>
     );
 }
+
+Dashboard.propTypes = {
+    auth: PropTypes.object({
+        user: PropTypes.object()
+    })
+};
