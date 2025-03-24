@@ -2,6 +2,7 @@ import { useForm } from '@inertiajs/react';
 import Modal from '@/Components/Modal';
 import DangerButton from '@/Components/DangerButton';
 import SecondaryButton from '@/Components/SecondaryButton';
+import PropTypes from 'prop-types';
 
 export default function DeleteCalendarActivityForm({ activity, show, onClose }) {
     const { delete: destroy } = useForm({});
@@ -29,3 +30,11 @@ export default function DeleteCalendarActivityForm({ activity, show, onClose }) 
         </Modal>
     );
 }
+
+DeleteCalendarActivityForm.propTypes = {
+    activity: PropTypes.shape({
+        id: PropTypes.number
+    }),
+    show: PropTypes.bool,
+    onClose: PropTypes.func
+};

@@ -1,6 +1,7 @@
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import EditCalendarActivity from './Partials/EditCalendarActivityForm';
 import { Head, Link } from "@inertiajs/react";
+import PropTypes from "prop-types";
 
 export default function Create({ auth, activity }) {
     return (
@@ -33,3 +34,18 @@ export default function Create({ auth, activity }) {
         </Authenticated>
     );
 }
+
+Create.propTypes = {
+    auth: PropTypes.shape({
+        user: PropTypes.object
+    }),
+    activity: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        is_all_day: PropTypes.bool,
+        start_date: PropTypes.string,
+        end_date: PropTypes.string,
+        start_time: PropTypes.string,
+        end_time: PropTypes.string
+    })
+};

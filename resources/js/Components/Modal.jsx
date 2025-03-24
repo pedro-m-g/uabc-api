@@ -1,12 +1,13 @@
 import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
+import PropTypes from 'prop-types';
 
 export default function Modal({
     children,
     show = false,
     maxWidth = '2xl',
     closeable = true,
-    onClose = () => {},
+    onClose = () => {}
 }) {
     const close = () => {
         if (closeable) {
@@ -61,3 +62,11 @@ export default function Modal({
         </Transition>
     );
 }
+
+Modal.propTypes = {
+    children: PropTypes.node,
+    show: PropTypes.bool,
+    maxWidth: PropTypes.string,
+    closeable: PropTypes.bool,
+    onClose: PropTypes.func
+};

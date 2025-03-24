@@ -4,6 +4,7 @@ import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link } from '@inertiajs/react';
+import PropTypes from 'prop-types';
 
 export default function Authenticated({ user, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
@@ -125,3 +126,12 @@ export default function Authenticated({ user, header, children }) {
         </div>
     );
 }
+
+Authenticated.propTypes = {
+    user: PropTypes.shape({
+        name: PropTypes.string,
+        email: PropTypes.string
+    }),
+    header: PropTypes.node,
+    children: PropTypes.node
+};

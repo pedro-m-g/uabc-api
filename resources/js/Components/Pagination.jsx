@@ -1,4 +1,5 @@
 import SecondaryButtonLink from '@/Components/SecondaryButtonLink';
+import PropTypes from 'prop-types';
 
 export default function Pagination({
     first_page_url,
@@ -36,3 +37,14 @@ export default function Pagination({
         </div>
     );
 }
+
+Pagination.propTypes = {
+    first_page_url: PropTypes.string,
+    next_page_url: PropTypes.string,
+    prev_page_url: PropTypes.string,
+    current_page: PropTypes.number,
+    per_page: PropTypes.number,
+    from: PropTypes.number,
+    to: PropTypes.number,
+    last_page: PropTypes.number
+};

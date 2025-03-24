@@ -4,6 +4,7 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import esLocale from '@fullcalendar/core/locales/es';
+import PropTypes from "prop-types";
 
 export default function Index({ auth, activities }) {
     const events = activities.map(activity => ({
@@ -67,3 +68,18 @@ export default function Index({ auth, activities }) {
         </Authenticated>
     );
 }
+
+Index.propTypes = {
+    auth: PropTypes.shape({
+        user: PropTypes.object
+    }),
+    activities: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        is_all_day: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+        start_date: PropTypes.string,
+        end_date: PropTypes.string,
+        start_time: PropTypes.string,
+        end_time: PropTypes.string
+    }))
+};

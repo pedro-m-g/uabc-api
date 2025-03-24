@@ -5,6 +5,7 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Transition } from '@headlessui/react';
+import PropTypes from 'prop-types';
 
 export default function EditCalendarActivity({ activity }) {
     const { data, setData, post, put, errors, processing, recentlySuccessful } = useForm({
@@ -124,3 +125,15 @@ export default function EditCalendarActivity({ activity }) {
         </form>
     );
 }
+
+EditCalendarActivity.propTypes = {
+    activity: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        is_all_day: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+        start_date: PropTypes.string,
+        end_date: PropTypes.string,
+        start_time: PropTypes.string,
+        end_time: PropTypes.string
+    })
+};

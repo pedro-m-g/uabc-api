@@ -92,8 +92,31 @@ export default function Show({ auth, coach }) {
 }
 
 Show.propTypes = {
-    auth: PropTypes.object({
-        user: PropTypes.object()
+    auth: PropTypes.shape({
+        user: PropTypes.object
     }),
-    coach: PropTypes.object()
+    coach: PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string,
+        school_id: PropTypes.string,
+        description: PropTypes.string,
+        is_available_monday: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+        is_available_tuesday: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+        is_available_wednesday: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+        is_available_thursday: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+        is_available_friday: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+        is_available_saturday: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+        monday_start_time: PropTypes.string,
+        monday_end_time: PropTypes.string,
+        tuesday_start_time: PropTypes.string,
+        tuesday_end_time: PropTypes.string,
+        wednesday_start_time: PropTypes.string,
+        wednesday_end_time: PropTypes.string,
+        thursday_start_time: PropTypes.string,
+        thursday_end_time: PropTypes.string,
+        friday_start_time: PropTypes.string,
+        friday_end_time: PropTypes.string,
+        saturday_start_time: PropTypes.string,
+        saturday_end_time: PropTypes.string
+    })
 };

@@ -1,6 +1,7 @@
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 import EditProcedureForm from "./Partials/EditProcedureForm";
+import PropTypes from "prop-types";
 
 export default function Create({ auth }) {
     const procedure = {
@@ -35,3 +36,9 @@ export default function Create({ auth }) {
         </Authenticated>
     );
 }
+
+Create.propTypes = {
+    auth: PropTypes.shape({
+        user: PropTypes.object
+    })
+};

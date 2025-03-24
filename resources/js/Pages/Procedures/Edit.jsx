@@ -1,6 +1,7 @@
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 import EditProcedureForm from "./Partials/EditProcedureForm";
+import PropTypes from "prop-types";
 
 export default function Edit({ auth, procedure }) {
     return (
@@ -31,3 +32,14 @@ export default function Edit({ auth, procedure }) {
         </Authenticated>
     );
 }
+
+Edit.propTypes = {
+    auth: PropTypes.shape({
+        user: PropTypes.object
+    }),
+    procedure: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        steps: PropTypes.arrayOf(PropTypes.string)
+    })
+};

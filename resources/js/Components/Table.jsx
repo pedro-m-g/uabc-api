@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function Table({ header, children, ...props }) {
     return (
         <table
@@ -13,3 +15,8 @@ export default function Table({ header, children, ...props }) {
         </table>
     );
 }
+
+Table.propTypes = {
+    header: PropTypes.node,
+    children: PropTypes.node
+};

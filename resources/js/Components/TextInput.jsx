@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
 
-export default forwardRef(function TextInput(
+function TextInput(
     { type = 'text', className = '', isFocused = false, ...props },
     ref
 ) {
@@ -27,4 +28,12 @@ export default forwardRef(function TextInput(
             ref={localRef}
         />
     );
-});
+}
+
+export default forwardRef(TextInput);
+
+TextInput.propTypes = {
+    type: PropTypes.string,
+    className: PropTypes.string,
+    isFocused: PropTypes.bool
+};

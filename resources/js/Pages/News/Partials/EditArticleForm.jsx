@@ -5,6 +5,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import MarkdownEditor from '@uiw/react-markdown-editor';
 import { Transition } from '@headlessui/react';
+import PropTypes from 'prop-types';
 
 export default function EditArticleForm({ article }) {
     const today = new Date().toISOString().split('T')[0];
@@ -83,3 +84,12 @@ export default function EditArticleForm({ article }) {
         </form>
     );
 }
+
+EditArticleForm.propTypes = {
+    article: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        content: PropTypes.string,
+        published_at: PropTypes.string
+    })
+};

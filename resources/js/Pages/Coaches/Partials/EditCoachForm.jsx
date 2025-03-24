@@ -5,6 +5,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import Checkbox from '@/Components/Checkbox';
 import { Transition } from '@headlessui/react';
+import PropTypes from 'prop-types';
 
 export default function EditCoachForm({ coach }) {
     const { data, setData, post, put, errors, processing, recentlySuccessful } = useForm({
@@ -149,3 +150,30 @@ export default function EditCoachForm({ coach }) {
         </form>
     );
 }
+
+EditCoachForm.propTypes = {
+    coach: PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string,
+        school_id: PropTypes.string,
+        description: PropTypes.string,
+        is_available_monday: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+        is_available_tuesday: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+        is_available_wednesday: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+        is_available_thursday: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+        is_available_friday: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+        is_available_saturday: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+        monday_start_time: PropTypes.string,
+        monday_end_time: PropTypes.string,
+        tuesday_start_time: PropTypes.string,
+        tuesday_end_time: PropTypes.string,
+        wednesday_start_time: PropTypes.string,
+        wednesday_end_time: PropTypes.string,
+        thursday_start_time: PropTypes.string,
+        thursday_end_time: PropTypes.string,
+        friday_start_time: PropTypes.string,
+        friday_end_time: PropTypes.string,
+        saturday_start_time: PropTypes.string,
+        saturday_end_time: PropTypes.string
+    })
+};

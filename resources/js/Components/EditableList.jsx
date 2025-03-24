@@ -2,6 +2,7 @@ import SecondaryButton from './SecondaryButton';
 import DangerButton from './DangerButton';
 import TextInput from './TextInput';
 import InputError from './InputError';
+import PropTypes from 'prop-types';
 
 export default function EditableList({ value, onChange, errors }) {
     const maxSteps = 10;
@@ -22,8 +23,8 @@ export default function EditableList({ value, onChange, errors }) {
 
     return (
         <div className='space-y-4'>
-            {value.map((_, index) => (
-                <div key={index}>
+            {value.map((step, index) => (
+                <div key={`${index + 1}_step`}>
                     <div className='flex'>
                         <div
                             className="flex items-center justify-center px-4 bg-blue-400 text-white"
@@ -33,7 +34,7 @@ export default function EditableList({ value, onChange, errors }) {
                         <TextInput
                             id={`steps.${index + 1}`}
                             className='flex-1'
-                            value={value[index]}
+                            value={step}
                             onChange={(e) => onChange(editListItem(index, e.target.value))}
                             required
                         />
@@ -68,3 +69,11 @@ export default function EditableList({ value, onChange, errors }) {
         </div>
     );
 }
+
+EditableList.propTypes = {
+    value: PropTypes.arrayOf(PropTypes.string),
+    onChange: PropTypes.func,
+    errors: PropTypes.shape({
+        steps: PropTypes.arrayOf(PropTypes.string)
+    })
+};

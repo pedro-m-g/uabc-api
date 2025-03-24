@@ -5,6 +5,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { useForm } from '@inertiajs/react';
 import { Transition } from '@headlessui/react';
+import PropTypes from 'prop-types';
 
 export default function UpdatePasswordForm({ className = '' }) {
     const passwordInput = useRef(null);
@@ -111,3 +112,7 @@ export default function UpdatePasswordForm({ className = '' }) {
         </section>
     );
 }
+
+UpdatePasswordForm.propTypes = {
+    className: PropTypes.string
+};

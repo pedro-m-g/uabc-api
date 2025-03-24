@@ -1,4 +1,11 @@
-export default function PrimaryButton({ className = '', disabled, children, ...props }) {
+import PropTypes from "prop-types";
+
+export default function PrimaryButton({
+    className = '',
+    disabled,
+    children,
+    ...props
+}) {
     return (
         <button
             {...props}
@@ -13,3 +20,9 @@ export default function PrimaryButton({ className = '', disabled, children, ...p
         </button>
     );
 }
+
+PrimaryButton.propTypes = {
+    className: PropTypes.string,
+    disabled: PropTypes.bool,
+    children: PropTypes.node
+};

@@ -1,6 +1,7 @@
 import GuestLayout from '@/Layouts/GuestLayout';
 import PrimaryButton from '@/Components/PrimaryButton';
 import { Head, Link, useForm } from '@inertiajs/react';
+import PropTypes from 'prop-types';
 
 export default function VerifyEmail({ status }) {
     const { post, processing } = useForm({});
@@ -43,3 +44,7 @@ export default function VerifyEmail({ status }) {
         </GuestLayout>
     );
 }
+
+VerifyEmail.propTypes = {
+    status: PropTypes.string
+};

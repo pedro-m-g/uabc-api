@@ -6,6 +6,7 @@ import DeleteProcedureForm from "./Partials/DeleteProcedureForm";
 import DangerButton from "@/Components/DangerButton";
 import Pagination from "@/Components/Pagination";
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 export default function Index({ auth, procedures }) {
     const [procedureToDelete, setProcedureToDelete] = useState();
@@ -62,3 +63,15 @@ export default function Index({ auth, procedures }) {
         </Authenticated>
     );
 }
+
+Index.propTypes = {
+    auth: PropTypes.shape({
+        user: PropTypes.object
+    }),
+    procedures: PropTypes.shape({
+        data: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.number,
+            title: PropTypes.string
+        }))
+    })
+};

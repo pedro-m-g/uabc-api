@@ -1,4 +1,12 @@
-export default function SecondaryButton({ type = 'button', className = '', disabled, children, ...props }) {
+import PropTypes from "prop-types";
+
+export default function SecondaryButton({
+    type = 'button',
+    className = '',
+    disabled,
+    children,
+    ...props
+}) {
     return (
         <button
             {...props}
@@ -14,3 +22,10 @@ export default function SecondaryButton({ type = 'button', className = '', disab
         </button>
     );
 }
+
+SecondaryButton.propTypes = {
+    type: PropTypes.string,
+    className: PropTypes.string,
+    disabled: PropTypes.bool,
+    children: PropTypes.node
+};

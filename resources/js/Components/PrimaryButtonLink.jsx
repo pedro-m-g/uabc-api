@@ -1,6 +1,13 @@
 import { Link  } from '@inertiajs/react';
+import PropTypes from 'prop-types';
 
-export default function PrimaryButtonLink({ href, className = '', disabled, children, ...props }) {
+export default function PrimaryButtonLink({
+    href,
+    className = '',
+    disabled,
+    children,
+    ...props
+}) {
     return (
         <Link
             href={href}
@@ -17,3 +24,10 @@ export default function PrimaryButtonLink({ href, className = '', disabled, chil
         </Link>
     );
 }
+
+PrimaryButtonLink.propTypes = {
+    href: PropTypes.string,
+    className: PropTypes.string,
+    disabled: PropTypes.bool,
+    children: PropTypes.node
+};

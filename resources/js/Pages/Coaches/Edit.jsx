@@ -1,6 +1,7 @@
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 import EditCoachForm from "./Partials/EditCoachForm";
+import PropTypes from "prop-types";
 
 export default function Edit({ auth, coach }) {
     return (
@@ -31,3 +32,12 @@ export default function Edit({ auth, coach }) {
         </Authenticated>
     );
 }
+
+Edit.propTypes = {
+    auth: PropTypes.shape({
+        user: PropTypes.object
+    }),
+    coach: PropTypes.shape({
+        id: PropTypes.number
+    })
+};

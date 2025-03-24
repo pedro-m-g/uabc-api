@@ -4,6 +4,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Link, useForm, usePage } from '@inertiajs/react';
 import { Transition } from '@headlessui/react';
+import PropTypes from 'prop-types';
 
 export default function UpdateProfileInformation({ mustVerifyEmail, status, className = '' }) {
     const user = usePage().props.auth.user;
@@ -101,3 +102,9 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
         </section>
     );
 }
+
+UpdateProfileInformation.propTypes = {
+    mustVerifyEmail: PropTypes.bool,
+    status: PropTypes.string,
+    className: PropTypes.string
+};

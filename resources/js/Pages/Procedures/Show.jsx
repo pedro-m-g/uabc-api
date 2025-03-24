@@ -1,5 +1,6 @@
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
+import PropTypes from "prop-types";
 
 export default function Show({ auth, procedure }) {
     return (
@@ -23,7 +24,7 @@ export default function Show({ auth, procedure }) {
                             <h1 className="text-2xl">{procedure.title}</h1>
                             <div className="mt-4 space-y-2">
                                 {procedure.steps.map((step, index) => (
-                                    <div key={index} className="flex">
+                                    <div key={`${index}_${step}`} className="flex">
                                         <div
                                             className="flex items-center justify-center px-4 py-2 bg-blue-400 text-white"
                                         >
@@ -42,3 +43,14 @@ export default function Show({ auth, procedure }) {
         </Authenticated>
     );
 }
+
+Show.propTypes = {
+    auth: PropTypes.shape({
+        user: PropTypes.object
+    }),
+    procedure: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        steps: PropTypes.arrayOf(PropTypes.string)
+    })
+};

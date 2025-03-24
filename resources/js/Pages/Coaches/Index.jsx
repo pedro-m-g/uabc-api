@@ -7,6 +7,7 @@ import DeleteCoachForm from "./Partials/DeleteCoachForm";
 import DangerButton from "@/Components/DangerButton";
 import Pagination from "@/Components/Pagination";
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 export default function Index({ auth, coaches }) {
     const [coachToDelete, setCoachToDelete] = useState();
@@ -82,3 +83,16 @@ export default function Index({ auth, coaches }) {
         </Authenticated>
     );
 }
+
+Index.propTypes = {
+    auth: PropTypes.shape({
+        user: PropTypes.object
+    }),
+    coaches: PropTypes.shape({
+        data: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.number,
+            school_id: PropTypes.string,
+            name: PropTypes.string
+        }))
+    })
+};

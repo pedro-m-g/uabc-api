@@ -37,9 +37,9 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
 }
 
 Edit.propTypes = {
-    auth: PropTypes.object({
-        user: PropTypes.object()
+    auth: PropTypes.shape({
+        user: PropTypes.object
     }),
-    mustVerifyEmail: PropTypes.bool(),
-    status: PropTypes.string()
+    mustVerifyEmail: PropTypes.bool,
+    status: PropTypes.string
 };

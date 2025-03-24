@@ -7,6 +7,7 @@ import DeleteArticleForm from "./Partials/DeleteArticleForm";
 import DangerButton from "@/Components/DangerButton";
 import Pagination from "@/Components/Pagination";
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 export default function Index({ auth, articles }) {
     const [articleToDelete, setArticleToDelete] = useState();
@@ -78,3 +79,16 @@ export default function Index({ auth, articles }) {
         </Authenticated>
     );
 }
+
+Index.propTypes = {
+    auth: PropTypes.shape({
+        user: PropTypes.object
+    }),
+    articles: PropTypes.shape({
+        data: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.number,
+            title: PropTypes.string,
+            published_at: PropTypes.string
+        }))
+    })
+};

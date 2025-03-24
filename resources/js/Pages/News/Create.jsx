@@ -1,10 +1,11 @@
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 import EditArticleForm from "./Partials/EditArticleForm";
+import PropTypes from "prop-types";
 
 export default function Create({ auth }) {
     const article = {
-        id: '',
+        id: 0,
         title: '',
         content: '',
         published_at: ''
@@ -37,3 +38,9 @@ export default function Create({ auth }) {
         </Authenticated>
     );
 }
+
+Create.propTypes = {
+    auth: PropTypes.shape({
+        user: PropTypes.object
+    })
+};

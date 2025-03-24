@@ -57,7 +57,7 @@ export default function Dashboard({ auth }) {
 }
 
 Dashboard.propTypes = {
-    auth: PropTypes.object({
-        user: PropTypes.object()
+    auth: PropTypes.shape({
+        user: PropTypes.object
     })
 };

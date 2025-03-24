@@ -1,6 +1,7 @@
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 import EditCoachForm from "./Partials/EditCoachForm";
+import PropTypes from "prop-types";
 
 export default function Create({ auth }) {
     const coach = {
@@ -54,3 +55,9 @@ export default function Create({ auth }) {
         </Authenticated>
     );
 }
+
+Create.propTypes = {
+    auth: PropTypes.shape({
+        user: PropTypes.object
+    })
+};

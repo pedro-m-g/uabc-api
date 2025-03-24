@@ -1,5 +1,6 @@
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
+import PropTypes from "prop-types";
 
 export default function Show({ auth, id, title, content }) {
     return (
@@ -29,3 +30,12 @@ export default function Show({ auth, id, title, content }) {
         </Authenticated>
     );
 }
+
+Show.propTypes = {
+    auth: PropTypes.shape({
+        user: PropTypes.object
+    }),
+    id: PropTypes.number,
+    title: PropTypes.string,
+    content: PropTypes.string
+};

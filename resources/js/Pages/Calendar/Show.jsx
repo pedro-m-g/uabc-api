@@ -5,6 +5,7 @@ import SecondaryButtonLink from '@/Components/SecondaryButtonLink';
 import DangerButton from '@/Components/DangerButton';
 import DeleteCalendarActivityForm from './Partials/DeleteCalendarActivityForm';
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 export default function Show({ auth, activity }) {
     const startDate = activity.is_all_day
@@ -91,3 +92,18 @@ export default function Show({ auth, activity }) {
         </Authenticated>
     );
 }
+
+Show.propTypes = {
+    auth: PropTypes.shape({
+        user: PropTypes.object
+    }),
+    activity: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        is_all_day: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+        start_date: PropTypes.string,
+        end_date: PropTypes.string,
+        start_time: PropTypes.string,
+        end_time: PropTypes.string
+    })
+};

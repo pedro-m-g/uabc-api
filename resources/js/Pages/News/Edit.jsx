@@ -1,6 +1,7 @@
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 import EditArticleForm from "./Partials/EditArticleForm";
+import PropTypes from "prop-types";
 
 export default function Edit({ auth, article }) {
     return (
@@ -31,3 +32,14 @@ export default function Edit({ auth, article }) {
         </Authenticated>
     );
 }
+
+Edit.propTypes = {
+    auth: PropTypes.shape({
+        user: PropTypes.object
+    }),
+    article: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        content: PropTypes.string
+    })
+};

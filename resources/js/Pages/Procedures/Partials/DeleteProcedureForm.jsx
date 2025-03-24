@@ -2,6 +2,7 @@ import { useForm } from '@inertiajs/react';
 import Modal from '@/Components/Modal';
 import DangerButton from '@/Components/DangerButton';
 import SecondaryButton from '@/Components/SecondaryButton';
+import PropTypes from 'prop-types';
 
 export default function DeleteProcedureForm({ procedure, show, onClose }) {
     const { delete: destroy } = useForm({});
@@ -29,3 +30,13 @@ export default function DeleteProcedureForm({ procedure, show, onClose }) {
         </Modal>
     );
 }
+
+DeleteProcedureForm.propTypes = {
+    procedure: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        steps: PropTypes.arrayOf(PropTypes.string)
+    }),
+    show: PropTypes.bool,
+    onClose: PropTypes.func
+};

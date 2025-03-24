@@ -1,6 +1,7 @@
-import { useState, createContext, useContext, Fragment } from 'react';
+import { useState, createContext, useContext, Fragment, useMemo } from 'react';
 import { Link } from '@inertiajs/react';
 import { Transition } from '@headlessui/react';
+import PropTypes from 'prop-types';
 
 const DropDownContext = createContext({
     open: false,
@@ -15,8 +16,10 @@ const Dropdown = ({ children }) => {
         setOpen((previousState) => !previousState);
     };
 
+    const context = useMemo(() => ({ open, setOpen, toggleOpen }));
+
     return (
-        <DropDownContext.Provider value={{ open, setOpen, toggleOpen }}>
+        <DropDownContext.Provider value={context}>
             <div className="relative">{children}</div>
         </DropDownContext.Provider>
     );
@@ -32,6 +35,10 @@ const Trigger = ({ children }) => {
             {open && <div className="fixed inset-0 z-40" onClick={() => setOpen(false)}></div>}
         </>
     );
+};
+
+Trigger.propTypes = {
+    children: PropTypes.node
 };
 
 const Content = ({ align = 'right', width = '48', contentClasses = 'py-1 bg-white', children }) => {
@@ -52,26 +59,31 @@ const Content = ({ align = 'right', width = '48', contentClasses = 'py-1 bg-whit
     }
 
     return (
-        <>
-            <Transition
-                as={Fragment}
-                show={open}
-                enter="transition ease-out duration-200"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="transition ease-in duration-75"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
+        <Transition
+            as={Fragment}
+            show={open}
+            enter="transition ease-out duration-200"
+            enterFrom="opacity-0 scale-95"
+            enterTo="opacity-100 scale-100"
+            leave="transition ease-in duration-75"
+            leaveFrom="opacity-100 scale-100"
+            leaveTo="opacity-0 scale-95"
+        >
+            <div
+                className={`absolute z-50 mt-2 rounded-md shadow-lg ${alignmentClasses} ${widthClasses}`}
+                onClick={() => setOpen(false)}
             >
-                <div
-                    className={`absolute z-50 mt-2 rounded-md shadow-lg ${alignmentClasses} ${widthClasses}`}
-                    onClick={() => setOpen(false)}
-                >
-                    <div className={`rounded-md ring-1 ring-black ring-opacity-5 ` + contentClasses}>{children}</div>
+                <div className={`rounded-md ring-1 ring-black ring-opacity-5 ` + contentClasses}>{children}</div>
                 </div>
-            </Transition>
-        </>
+        </Transition>
     );
+};
+
+Content.propTypes = {
+    align: PropTypes.string,
+    width: PropTypes.string,
+    contentClasses: PropTypes.string,
+    children: PropTypes.node
 };
 
 const DropdownLink = ({ className = '', children, ...props }) => {
@@ -88,8 +100,17 @@ const DropdownLink = ({ className = '', children, ...props }) => {
     );
 };
 
+DropdownLink.propTypes = {
+    className: PropTypes.string,
+    children: PropTypes.node
+};
+
 Dropdown.Trigger = Trigger;
 Dropdown.Content = Content;
 Dropdown.Link = DropdownLink;
+
+Dropdown.propTypes = {
+    children: PropTypes.node
+};
 
 export default Dropdown;

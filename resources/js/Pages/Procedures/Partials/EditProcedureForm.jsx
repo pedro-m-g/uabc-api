@@ -5,6 +5,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import EditableList from '@/Components/EditableList';
 import { Transition } from '@headlessui/react';
+import PropTypes from 'prop-types';
 
 export default function EditProcedureForm({ procedure }) {
     const { data, setData, post, put, errors, processing, recentlySuccessful } = useForm({
@@ -61,3 +62,11 @@ export default function EditProcedureForm({ procedure }) {
         </form>
     );
 }
+
+EditProcedureForm.propTypes = {
+    procedure: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        steps: PropTypes.arrayOf(PropTypes.string)
+    })
+};
